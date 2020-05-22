@@ -1,0 +1,61 @@
+{
+  "title": "Auth0 Example Extension",
+  "name": "auth0-example-extension",
+  "version": "0.0.0",
+  "author": "auth0",
+  "useHashName": false,
+  "description": "Auth0 example extension with the comments",
+  "type": "application",
+  "category": "end_user",
+  "logoUrl": "https://cdn.auth0.com/styleguide/components/1.0.8/media/logos/img/badge.png",
+  "initialUrlPath": "/",
+  "repository": "https://github.com/pushpabrol/example-extension",
+  "keywords": [
+    "auth0",
+    "extension"
+  ],
+  "auth0": {
+    "createClient": true,
+    "onUninstallPath": "/.extensions/on-uninstall",
+    "scopes": "read:clients delete:clients"
+  },
+  "secrets": {
+    "FEATURE_ENABLED": {
+      "description": "Select with options",
+      "type": "select",
+      "allowMultiple": false,
+      "options": [
+        {
+          "value": "false",
+          "text": "No"
+        },
+        {
+          "value": "true",
+          "text": "Yes"
+        }
+      ]
+    },
+    "FEATURE_THING": {
+      "description": "Field that became visible only when certain option is selected",
+      "required": true,
+      "visibleIf": {
+        "FEATURE_ENABLED": "true"
+      }
+    },
+    "TEAM": {
+      "description": "Text field with default value",
+      "default": "Sarcastic Snails",
+      "required": true
+    },
+    "USERNAME": {
+      "description": "Text field with placeholder",
+      "example": "awsome_name",
+      "required": true
+    },
+    "PASSWORD": {
+      "description": "Password secret, doesn't show contents in dashboard",
+      "type": "password",
+      "required": true
+    }
+  }
+}
