@@ -8,6 +8,8 @@ export default (storage) => {
   // management api client initialization
   logger.debug("In api...");
   logger.debug(config('AUTH0_DOMAIN'));
+  logger.debug(config('AUTH0_CLIENT_ID'));
+  logger.debug(config('AUTH0_CLIENT_SECRET'));
   const managementApiClient = middlewares.managementApiClient({
     domain: config('AUTH0_DOMAIN'),
     clientId: config('AUTH0_CLIENT_ID'),

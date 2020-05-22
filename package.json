@@ -96,7 +96,7 @@
     "logoUrl": "https://cdn.auth0.com/styleguide/components/1.0.8/media/logos/img/badge.png",
     "initialUrlPath": "/",
     "auth0": {
-      "createClient": false,
+      "createClient": true,
       "onUninstallPath": "/.extensions/on-uninstall",
       "onInstallPath": "/.extensions/on-install",      
       "scopes": "read:clients delete:clients read:rules create:rules update:rules delete:rules"
