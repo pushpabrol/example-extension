@@ -43,7 +43,7 @@ export default () => {
     })
       .then(function() {
         logger.debug("here2");
-        req.auth0.rulesConfigs.set({ key: CONFIDENCE_REQUIRED }, {value: config('CONFIDENCE_REQUIRED')}).then(function() {res.sendStatus(204);})
+        req.auth0.rulesConfigs.set({ key: "CONFIDENCE_REQUIRED" }, {value: config('CONFIDENCE_REQUIRED')}).then(function() {res.sendStatus(204);})
       })
       .catch(function(error) {
         logger.debug(error);
