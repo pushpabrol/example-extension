@@ -10,8 +10,7 @@
     "clean": "rimraf ./dist",
     "validate": "a0-ext validate ./package.json",
     "package": "a0-ext package --client ./dist/client/ --out ./dist",
-    "build": "npm run validate && npm run clean && npm run client:build && npm run extension:build && npm run package",
-    "client:build": "a0-ext build:client ./client/app.jsx ./dist/client",
+    "build": "npm run validate && npm run clean && npm run extension:build",
     "extension:build": "a0-ext build:server ./webtask.js ./dist && cp ./dist/auth0-example-extension.extension.$npm_package_version.js ./build/bundle.js && cp ./webtask.json ./dist/webtask.json",
     "serve:dev": "cross-env NODE_ENV=development nodemon -e js --ignore assets/app/ --ignore build/webpack/ --ignore client/ --ignore server/data.json --ignore node_modules/ ./build/webpack/server.js",
     "serve:prod": "cross-env NODE_ENV=production node index.js"
