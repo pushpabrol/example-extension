@@ -20,7 +20,6 @@ export default () => {
     clientSecret: config('AUTH0_CLIENT_SECRET')
   }));
 
-
   hooks.post('/on-install', function(req, res) {
     logger.debug('Install running...');
 

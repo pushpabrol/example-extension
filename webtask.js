@@ -8,6 +8,7 @@ const expressApp = require('./server').default;
 const logger = require('./server/lib/logger');
 
 module.exports = tools.createServer((cfg, storage) => {
+  logger.info(cfg);
   logger.info('Starting Auth0 Example Extension - Version:', process.env.CLIENT_VERSION);
   return expressApp(cfg, storage);
 });
