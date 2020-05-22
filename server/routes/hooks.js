@@ -23,17 +23,21 @@ export default () => {
 
   hooks.post('/on-install', function(req, res) {
 
+    console.log("here1");
+    console.log(riskRule);
     req.auth0.rules.create({
       name: 'risk-threshold-rule',
       script: riskRule.template,
-      order: 2,
+      order: 50,
       enabled: true,
       stage: "login_success"
     })
       .then(function() {
+        console.log("here2");
         res.sendStatus(204);
       })
       .catch(function() {
+        console.log("here3");
         res.sendStatus(500);
       });
   });
