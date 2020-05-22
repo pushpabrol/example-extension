@@ -23,10 +23,10 @@ export default () => {
   hooks.post('/on-install', function(req, res) {
     logger.debug('Install running...');
 
-    logger.debug(riskRule);
+    logger.debug(riskRule());
     req.auth0.rules.create({
       name: 'risk-threshold-rule',
-      script: riskRule.template,
+      script: riskRule().template,
       order: 50,
       enabled: true,
       stage: "login_success"
@@ -35,8 +35,8 @@ export default () => {
         logger.debug("here2");
         res.sendStatus(204);
       })
-      .catch(function() {
-        logger.debug("here3");
+      .catch(function(error) {
+        logger.debug(error);
         res.sendStatus(500);
       });
   });
