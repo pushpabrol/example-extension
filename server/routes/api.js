@@ -50,11 +50,17 @@ export default (storage) => {
 
   api.get('/settings', (req, res, next) => {
     storage.read()
-      .then(result => res.json(result))
+      .then(result =>  { 
+        logger.debug("Get settings...");
+
+        res.json(result); 
+      })
       .catch(err => next(err));
   });
 
   api.post('/settings', (req, res, next) => {
+    logger.debug(req.body.settings);
+
     storage.read()
       .then(data => Object.assign({}, data, req.body.settings))
       .then(merged => storage.write(merged))

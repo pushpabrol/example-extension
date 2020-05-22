@@ -1,7 +1,7 @@
 {
   "title": "Risk Score Extension",
   "name": "auth0-risk-score-extension",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "author": "auth0",
   "useHashName": false,
   "description": "Auth0 Risk Score Extension",
