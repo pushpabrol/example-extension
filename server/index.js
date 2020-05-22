@@ -25,13 +25,14 @@ export default function (cfg, storageProvider) {
 
   logger.debug("config....");
     logger.debug(config('AUTH0_DOMAIN'));
-  //app.use('/api', api(storage));
-  //app.use('/app', Express.static(path.join(__dirname, '../dist')));
+
+  app.use('/api', api(storage));
+  app.use('/app', Express.static(path.join(__dirname, '../dist')));
   app.use('/meta', meta());
   app.use('/.extensions', hooks());
 
   // Fallback to rendering HTML.
-  //app.get('*', htmlRoute());
+  app.get('*', htmlRoute());
 
   // Generic error handler.
   app.use(middlewares.errorHandler(logger.error.bind(logger)));
