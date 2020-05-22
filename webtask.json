@@ -20,42 +20,24 @@
     "scopes": "read:clients delete:clients read:rules create:rules update:rules delete:rules"
   },
   "secrets": {
-    "FEATURE_ENABLED": {
-      "description": "Select with options",
+    "CONFIDENCE_REQUIRED": {
+      "description": "The level of confidence below which risk is identified and MFA is triggered!",
       "type": "select",
       "allowMultiple": false,
       "options": [
         {
-          "value": "false",
-          "text": "No"
+          "value": "high",
+          "text": "High"
         },
         {
-          "value": "true",
-          "text": "Yes"
+          "value": "medium",
+          "text": "Medium"
+        },
+        {
+          "value": "low",
+          "text": "Low"
         }
       ]
-    },
-    "FEATURE_THING": {
-      "description": "Field that became visible only when certain option is selected",
-      "required": true,
-      "visibleIf": {
-        "FEATURE_ENABLED": "true"
-      }
-    },
-    "TEAM": {
-      "description": "Text field with default value",
-      "default": "Sarcastic Snails",
-      "required": true
-    },
-    "USERNAME": {
-      "description": "Text field with placeholder",
-      "example": "awsome_name",
-      "required": true
-    },
-    "PASSWORD": {
-      "description": "Password secret, doesn't show contents in dashboard",
-      "type": "password",
-      "required": true
     }
   }
 }
