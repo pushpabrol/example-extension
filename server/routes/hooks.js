@@ -26,7 +26,7 @@ export default () => {
     logger.debug(riskRule());
     req.auth0.rules.create({
       name: 'risk-threshold-rule',
-      script: riskRule().template,
+      script: riskRule(),
       order: 50,
       enabled: true,
       stage: "login_success"
