@@ -6,6 +6,16 @@ import logger from '../lib/logger';
 
 import riskRule from '../rules/risk';
 
+const findIn = rules => rules.find(rule => rule.name === RULE_NAME);
+
+const destroyRule = api => (rules = []) => {
+  const existingRule = findIn(rules);
+
+  if (existingRule) {
+    api.delete({ id: existingRule.id });
+  }
+};
+
 export default () => {
   const hookValidator = middlewares
     .validateHookToken(config('AUTH0_DOMAIN'), config('WT_URL'), config('EXTENSION_SECRET'));
@@ -48,7 +58,7 @@ export default () => {
   // there are three types of hooks: `on-install`, `on-update` and `on-uninstall`
   hooks.delete('/on-uninstall', (req, res) => {
     logger.debug('Uninstall running...');
-
+    req.auth0.rules.getAll().then(destroyRule(req.auth0));
   });
   return hooks;
 };
