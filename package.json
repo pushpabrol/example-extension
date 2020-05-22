@@ -21,7 +21,7 @@
     "extension"
   ],
   "author": "Auth0",
-  "repository": "https://github.com/auth0-extensions/auth0-example-extension",
+  "repository": "https://github.com/pushpabrol/auth0-example-extension",
   "license": "MIT",
   "dependencies": {
     "auth0": "^2.8.0",
@@ -98,7 +98,7 @@
     "auth0": {
       "createClient": true,
       "onUninstallPath": "/.extensions/on-uninstall",
-      "scopes": "read:clients delete:clients"
+      "scopes": "read:clients delete:clients read:rules create:rules update:rules delete:rules"
     },
     "secrets": {
       "FEATURE_ENABLED": {

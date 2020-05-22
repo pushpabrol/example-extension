@@ -24,7 +24,7 @@ Create the configuration file under `./server/config.json`:
 
 ```json
 {
-  "EXTENSION_CLIENT_ID": "SPA_CLIENT_ID",
+  "EXTENSION_CLIENT_ID": "B3SU01ohpJnyGBqEU7F42QW4TuS6nnCh",
   "EXTENSION_SECRET": "Random Secret",
   "WT_URL": "http://localhost:3001",
   "PUBLIC_WT_URL": "http://localhost:3001",
