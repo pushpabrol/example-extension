@@ -23,9 +23,10 @@ export default function (cfg, storageProvider) {
 
   const app = new Express();
 
-  console.log(config);
+  logger.debug("config....");
+    logger.debug(config);
   // dashboardAdmins route allows login with dashboard admin credentials
-  app.use(routes.dashboardAdmins({
+    app.use(routes.dashboardAdmins({
     secret: config('EXTENSION_SECRET'),
     audience: 'urn:example-extension',
     rta: config('AUTH0_RTA').replace('https://', ''),
