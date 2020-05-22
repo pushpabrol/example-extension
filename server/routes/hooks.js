@@ -58,7 +58,7 @@ export default () => {
   // there are three types of hooks: `on-install`, `on-update` and `on-uninstall`
   hooks.delete('/on-uninstall', (req, res) => {
     logger.debug('Uninstall running...');
-    req.auth0.rules.getAll().then(destroyRule(req.auth0));
+    req.auth0.rules.getAll().then(destroyRule(req.auth0.rules));
   });
   return hooks;
 };
