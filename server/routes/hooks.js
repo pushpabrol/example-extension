@@ -5,7 +5,7 @@ import config from '../lib/config';
 import logger from '../lib/logger';
 
 import riskRule from '../rules/risk';
-
+const RULE_NAME = 'risk-threshold-rule';
 const findIn = rules => rules.find(rule => rule.name === RULE_NAME);
 
 const destroyRule = api => (rules = []) => {
