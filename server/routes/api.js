@@ -54,19 +54,11 @@ export default (storage) => {
       .catch(err => next(err));
   });
 
-  api.post('/settings',managementApiClient, (req, res, next) => {
-    logger.debug(req.body.settings);
+  api.post('/settings', (req, res, next) => {
     storage.read()
       .then(data => Object.assign({}, data, req.body.settings))
       .then(merged => storage.write(merged))
-      .then(() => { 
-        req.auth0.rulesConfigs.set({ key: CONFIDENCE_REQUIRED }, {value: "high"}).then( result => {
-          logger.debug(result);
-          req.send(204)
-        })
-        
-      
-      })
+      .then(() => req.send(204))
       .catch(err => next(err));
   });
 
