@@ -17,7 +17,7 @@
     "createClient": true,
     "onUninstallPath": "/.extensions/on-uninstall",
     "onInstallPath": "/.extensions/on-install",    
-    "scopes": "read:clients delete:clients read:rules create:rules update:rules delete:rules"
+    "scopes": "read:clients delete:clients read:rules create:rules update:rules delete:rules update:rules_configs"
   },
   "secrets": {
     "CONFIDENCE_REQUIRED": {
