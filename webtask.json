@@ -22,6 +22,7 @@
   },
   "secrets": {
     "CONFIDENCE_REQUIRED": {
+      "required": true,
       "description": "The level of confidence below which risk is identified and MFA is triggered!",
       "type": "select",
       "allowMultiple": false,
