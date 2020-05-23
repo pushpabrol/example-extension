@@ -5,6 +5,7 @@ import { middlewares, routes } from 'auth0-extension-express-tools';
 import api from './routes/api';
 import hooks from './routes/hooks';
 import meta from './routes/meta';
+import htmlRoute from './routes/html';
 import config from './lib/config';
 import logger from './lib/logger';
 
