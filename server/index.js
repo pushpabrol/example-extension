@@ -29,6 +29,8 @@ export default function (cfg, storageProvider) {
   app.use('/meta', meta());
   app.use('/.extensions', hooks());
 
+  app.get('*', htmlRoute());
+
   // Generic error handler.
   app.use(middlewares.errorHandler(logger.error.bind(logger)));
   return app;
