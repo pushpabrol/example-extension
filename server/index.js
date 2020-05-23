@@ -26,6 +26,26 @@ export default function (cfg, storageProvider) {
   logger.debug("config....");
   logger.debug(config('AUTH0_DOMAIN'));
 
+
+    // dashboardAdmins route allows login with dashboard admin credentials
+    app.use(routes.dashboardAdmins({
+      secret: config('EXTENSION_SECRET'),
+      audience: 'urn:example-extension',
+      rta: config('AUTH0_RTA').replace('https://', ''),
+      domain: config('AUTH0_DOMAIN'),
+      baseUrl: config('PUBLIC_WT_URL'),
+      webtaskUrl: config('PUBLIC_WT_URL'),
+      clientName: 'Example Extension',
+      sessionStorageKey: 'example-extension:apiToken',
+      // whether or not request access token. if access token is requested, it'll be used to access management api
+      // otherwise the client credentials will be used
+      noAccessToken: true,
+      // usually `/login` is for end-users and `/admins/login` - for dashboard admins
+      urlPrefix: '/admins',
+      // requested scopes for access token. matters not if `noAccessToken` set to true
+      scopes: 'read:users'
+    }));
+
   app.use('/api', api(storage));
   app.use('/meta', meta());
   app.use('/.extensions', hooks());
