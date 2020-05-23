@@ -34,21 +34,42 @@ export default () => {
     logger.debug('Install running...');
 
     logger.debug(riskRule());
-    req.auth0.rules.create({
-      name: 'risk-threshold-rule',
-      script: riskRule(),
-      order: 5000,
-      enabled: true,
-      stage: "login_success"
-    })
-      .then(function() {
-        logger.debug("here2");
+    req.auth0.rules.getAll().then(function(rules) {
+      const existingRule = findIn(rules);
+      if(existingRule) {
+        req.auth0.rules.update({ id: existingRule.id }, {
+          name: 'risk-threshold-rule',
+          script: riskRule()
+        })          
+        .then(function() {
+          logger.debug("here2-update");
+          req.auth0.rulesConfigs.set({ key: "CONFIDENCE_REQUIRED" }, {value: config('CONFIDENCE_REQUIRED')}).then(function() {res.sendStatus(204);})
+        })
+        .catch(function(error) {
+          logger.debug(error);
+          res.sendStatus(500);
+        });
         req.auth0.rulesConfigs.set({ key: "CONFIDENCE_REQUIRED" }, {value: config('CONFIDENCE_REQUIRED')}).then(function() {res.sendStatus(204);})
-      })
-      .catch(function(error) {
-        logger.debug(error);
-        res.sendStatus(500);
-      });
+      }
+      else {
+        req.auth0.rules.create({
+          name: 'risk-threshold-rule',
+          script: riskRule(),
+          order: 5000,
+          enabled: true,
+          stage: "login_success"
+        })
+          .then(function() {
+            logger.debug("here2");
+            req.auth0.rulesConfigs.set({ key: "CONFIDENCE_REQUIRED" }, {value: config('CONFIDENCE_REQUIRED')}).then(function() {res.sendStatus(204);})
+          })
+          .catch(function(error) {
+            logger.debug(error);
+            res.sendStatus(500);
+          });
+      }
+    })
+
   });
 
   // hooks being used to perform some additional actions during process of installation, updating or removing the extension.

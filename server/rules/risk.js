@@ -11,6 +11,7 @@ module.exports = () => {
 
   var LOG_TAG = '[RISK_RULE]: ';
   console.log(LOG_TAG, 'Entered Risk Rule...');     
+  console.log(configuration);
      if(context.anomalyDetection)
      {
      var overallConfidence = context.anomalyDetection.confidence;
