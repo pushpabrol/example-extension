@@ -23,7 +23,7 @@
   "repository": "https://github.com/pushpabrol/auth0-example-extension",
   "license": "MIT",
   "dependencies": {
-    "auth0": "^2.8.0",
+    "auth0": "^2.27.1",
     "auth0-extension-express-tools": "1.1.8",
     "auth0-extension-tools": "1.3.3",
     "auth0-extension-ui": "^1.2.2",
